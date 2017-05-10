@@ -20,4 +20,3 @@ do
 	sleep 1
 done
 [[ $1 ]] && exec sh -c "$@"
-exec bash --login
