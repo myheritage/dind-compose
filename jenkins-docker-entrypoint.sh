@@ -5,9 +5,9 @@ update-ca-trust extract
 
 if [ "$LOG" == "file" ]
 then
-	dockerd -H 0.0.0.0:2375 -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
+	nohup dockerd -H 0.0.0.0:2375 -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
 else
-	dockerd -H 0.0.0.0:2375 -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &
+	nohup dockerd -H 0.0.0.0:2375 -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &
 fi
 (( timeout = 60 + SECONDS ))
 until docker info >/dev/null 2>&1
