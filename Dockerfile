@@ -14,4 +14,4 @@ RUN yum install -y https://yum.dockerproject.org/repo/main/centos/7/Packages/doc
 
 COPY jenkins-docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT /usr/local/bin/jenkins-docker-entrypoint.sh
+entrypoint ["/usr/local/bin/jenkins-docker-entrypoint.sh"]
