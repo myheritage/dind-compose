@@ -19,5 +19,9 @@ do
 	fi
 	sleep 1
 done
-[[ $1 ]] && exec sh -c $@
+if [[ "$1" == "sh" ]]; then
+  exec $@
+else
+  [[ $1 ]] && exec sh -c $@
+fi
 exec bash --login
