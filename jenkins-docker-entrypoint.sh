@@ -7,9 +7,9 @@ if ! docker info >/dev/null 2>&1
 then
   if [ "$LOG" == "file" ]
   then
-  	nohup dockerd -H 0.0.0.0:2375 --log-driver=json_file --log-opt tag="{{.ImageName}}/{{.Name}}" -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
+  	nohup dockerd -H 0.0.0.0:2375 --log-driver=json-file --log-opt tag="{{.ImageName}}/{{.Name}}" -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
   else
-  	nohup dockerd -H 0.0.0.0:2375 --log-driver=json_file --log-opt tag="{{.ImageName}}/{{.Name}}" -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &
+  	nohup dockerd -H 0.0.0.0:2375 --log-driver=json-file --log-opt tag="{{.ImageName}}/{{.Name}}" -H unix:///var/run/docker.sock --storage-driver=vfs $DOCKER_DAEMON_ARGS &
   fi
   (( timeout = 60 + SECONDS ))
   until docker info >/dev/null 2>&1
